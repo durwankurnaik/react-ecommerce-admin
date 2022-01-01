@@ -10,11 +10,12 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
+import { useSelector } from "react-redux";
 
 function App() {
-  const admin = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root")).userReducer
-  ).currentUser.isAdmin;
+  const user = useSelector((state) => state.user)
+
+  const admin = user.currentUser.isAdmin;
 
   return (
     <Router>
